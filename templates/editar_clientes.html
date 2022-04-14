@@ -1,0 +1,141 @@
+{% extends 'base.html' %} {% block conteudo %} {% if mensagem %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ mensagem }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endif %}
+
+<section class="page-section about-heading">
+  <div class="container">
+    <img
+      class="img-fluid rounded about-heading-img mb-3 mb-lg-0"
+      src="{{url_for('static', filename='assets/img/about.jpg')}}"
+      alt="..."
+    />
+    <div class="about-heading-content">
+      <div class="row">
+        <section class="page-section cta">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                  <h2 class="section-heading mb-5">
+                    <span class="section-heading-upper"
+                      >Cadastro de Clientes</span
+                    >
+                  </h2>
+                  <form action="{{url_for('atualizar')}}" , method="post">
+                    <div class="item">
+                      <input type="hidden" name="id" value="{{cliente.id}}" />
+                      <label for="name"
+                        >Nome do responsável da empresa<span>*</span></label
+                      >
+                      <div class="name">
+                        <input
+                          id="nome"
+                          type="text"
+                          name="nome"
+                          value="{{cliente.nome}}"
+                          placeholder="Digite o nome completo do proprietário"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="item">
+                      <label for="name"
+                        >Digite a Razão Sócial<span>*</span></label
+                      >
+                      <div class="name">
+                        <input
+                          id="razao_social"
+                          type="text"
+                          name="razao_social"
+                          value="{{cliente.razao_social}}"
+                          placeholder="Digite o Razão Social da Empresa"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="item">
+                      <label for="name"
+                        >Razão Social da empresa e CNPJ<span>*</span></label
+                      >
+                      <div class="name-item">
+                        <input
+                          id="cnpj_cpf"
+                          type="text"
+                          name="cnpj_cpf"
+                          value="{{cliente.cnpj_cpf}}"
+                          placeholder="Digite a CNPJ ou CPF do responsável"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="item">
+                      <label for="name">Digite a Cidade<span>*</span></label>
+                      <div class="name-item">
+                        <input
+                          id="cidade"
+                          type="text"
+                          name="cidade"
+                          value="{{cliente.cidade}}"
+                          placeholder="Digite a Cidade"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="item">
+                      <label for="name">UF<span>*</span></label>
+                      <input
+                        id="UF"
+                        type="text"
+                        name="UF"
+                        value="{{cliente.UF}}"
+                        placeholder="Digite o Estado"
+                      />
+                    </div>
+                    <div class="item">
+                      <label for="name">Email<span>*</span></label>
+                      <input
+                        id="email"
+                        type="text"
+                        name="email"
+                        value="{{cliente.email}}"
+                        placeholder="Digite o e-mail de contato"
+                      />
+                    </div>
+                    <div class="item">
+                      <label for="name">Telefone'<span>*</span></label>
+                      <input
+                        id="telefone"
+                        type="text"
+                        name="telefone"
+                        value="{{cliente.telefone}}"
+                        placeholder="Digite um numero de Telefone com DDD"
+                      />
+                    </div>
+
+                    <div class="btn-block">
+                      <button type="submit" href="/">Atualizar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock conteudo %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{ mensagem }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
