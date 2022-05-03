@@ -1,119 +1,94 @@
 {% extends 'base.html' %} {% block conteudo %} {% if mensagem %}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  {{ mensagem }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+    {{ mensagem }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
 {% endif %}
 
 <section class="page-section about-heading">
-  <div class="container">
-    <img
-      class="img-fluid rounded about-heading-img mb-1 mb-lg-0"
-      src="{{url_for('static', filename='assets/img/DBO_logo.jpeg')}}"
-      alt="..."
-    />
-    <div class="about-heading-content">
-      <div class="row">
-        <section class="page-section cta">
-          <div class="container">
+    <div class="container">
+        <img class="img-fluid rounded about-heading-img mb-8 mb-lg-0
+        " src="{{url_for('static', filename='assets/img/DBO_logo.jpeg')}}" alt="..." />
+        <div class="about-heading-content">
             <div class="row">
-              <div class="col-xl-9 mx-auto">
-                <div class="cta-inner bg-faded text-center rounded">
-                  <h2 class="section-heading mb-5">
-                    <span class="section-heading-upper"
-                      >Cadastro de Clientes</span
-                    >
-                  </h2>
-                  <div class="registration-form">
-                    <form action="{{url_for('cadastro')}}" , method="post">
-                      <div class="form-icon">
-                        <span><i class="icon icon-user"></i></span>
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="nome"
-                          class="form-control item"
-                          id="nome"
-                          placeholder="Nome do Responsável"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="razao_social"
-                          class="form-control item"
-                          id="razao_social"
-                          placeholder="Digite a Razão Social da Empresa"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="cnpj_cpf"
-                          class="form-control item"
-                          id="cnpj_cpf"
-                          placeholder="Digite o CNPJ ou CPF"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="cidade"
-                          class="form-control item"
-                          id="cidade"
-                          placeholder="Digite a cidade"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="UF"
-                          class="form-control item"
-                          id="UF"
-                          placeholder="Digite a Estado"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="email"
-                          name="email"
-                          class="form-control item"
-                          id="email"
-                          placeholder="Digite o e-mail para contato"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="telefone"
-                          class="form-control item"
-                          id="telefone"
-                          placeholder="Digite o telefone para contato"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <button
-                          type="submit"
-                          class="btn btn-block create-account"
-                        >
-                          Cadastrar
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                <section class="page-section cta">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-9 mx-auto">
+                                <div class="cta-inner bg-faded text-center rounded">
+                                    <h2 class="section-heading mb-5">
+                                        <span class="section-heading-upper">Cadastro de Clientes</span>
+                                    </h2>
+                                    <div class="registration-form">
+                                        <form action="{{url_for('cadastro')}}" , method="post">
+                                            <div class="form-icon">
+                                                <span><i class="icon icon-user"></i></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="nome" class="form-control item" id="nome" placeholder="Nome do Responsável">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="razao_social" class="form-control item" id="razao_social" placeholder="Digite a Razão Social da Empresa">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="cnpj_cpf" class="form-control item" id="cnpj_cpf" placeholder="Digite o CNPJ ou CPF">
+                                            </div>
 
-                  <!--TESTE-->
+                                            <div class="form-group">
+
+                                                <div class="form-group">
+                                                    <input name="cep" class="form-control item" type="text" id="cep" value="" placeholder="CEP" onblur="pesquisacep(this.value);" />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <input name="rua" type="text" class="form-control item" id="rua" placeholder="Rua" /></div>
+                                                    <div class="col-sm-4">
+                                                        <input name="numero" type="text" class="form-control item" id="rua" placeholder="Numero" /></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="bairro" type="text" class="form-control item" id="bairro" placeholder="Bairro" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="cidade" type="text" class="form-control item" id="cidade" placeholder="Cidade" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="uf" type="text" class="form-control item" id="uf" placeholder="Estado" />
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <input type="email" name="email" class="form-control item" id="email" placeholder="Digite o e-mail para contato">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="telefone" class="form-control item" id="telefone" placeholder="Digite o telefone para contato">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-block create-account">Cadastrar</button>
+                                                </div>
+                                        </form>
+
+                                        </div>
+
+
+
+
+                                        <!--TESTE-->
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
+        </div>
 </section>
 {% endblock conteudo %}

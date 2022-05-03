@@ -1,126 +1,99 @@
 {% extends 'base.html' %} {% block conteudo %} {% if mensagem %}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  {{ mensagem }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+    {{ mensagem }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
 {% endif %}
 
 <section class="page-section about-heading">
-  <div class="container">
-    <img
-      class="img-fluid rounded about-heading-img mb-1 mb-lg-0"
-      src="{{url_for('static', filename='assets/img/DBO_logo.jpeg')}}"
-      alt="..."
-    />
-    <div class="about-heading-content">
-      <div class="row">
-        <section class="page-section cta">
-          <div class="container">
+    <div class="container">
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{url_for('static', filename='assets/img/about.jpg')}}" alt="..." />
+        <div class="about-heading-content">
             <div class="row">
-              <div class="col-xl-9 mx-auto">
-                <div class="cta-inner bg-faded text-center rounded">
-                  <h2 class="section-heading mb-5">
-                    <span class="section-heading-upper"
-                      >Cadastro de Clientes</span
-                    >
-                  </h2>
-                  <div class="registration-form">
-                    <form action="{{url_for('cadastro')}}" , method="post">
-                      <div class="form-icon">
-                        <span><i class="icon icon-user"></i></span>
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="nome"
-                          class="form-control item"
-                          id="nome"
-                          placeholder="Nome do Responsável"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="razao_social"
-                          class="form-control item"
-                          id="razao_social"
-                          placeholder="Digite a Razão Social da Empresa"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="cnpj_cpf"
-                          class="form-control item"
-                          id="cnpj_cpf"
-                          placeholder="Digite o CNPJ ou CPF"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="cidade"
-                          class="form-control item"
-                          id="cidade"
-                          placeholder="Digite a cidade"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="UF"
-                          class="form-control item"
-                          id="UF"
-                          placeholder="Digite a Estado"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="email"
-                          name="email"
-                          class="form-control item"
-                          id="email"
-                          placeholder="Digite o e-mail para contato"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="telefone"
-                          class="form-control item"
-                          id="telefone"
-                          placeholder="Digite o telefone para contato"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <button
-                          type="submit"
-                          class="btn btn-block create-account"
-                        >
-                          Cadastrar
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                <section class="page-section cta">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-9 mx-auto">
+                                <div class="cta-inner bg-faded text-center rounded">
+                                    <h2 class="section-heading mb-5">
+                                        <span class="section-heading-upper">Editar de Clientes</span>
+                                    </h2>
+                                    <div class="registration-form">
 
-                  <!--TESTE-->
+                                        <form action="{{url_for('atualizar')}}" , method="post">
+                                            <div class="form-icon">
+                                                <span><i class="icon icon-user"></i></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="hidden" name="id" value="{{cliente.id}}">
+                                                <label for="formGroupExampleInput">Nome do Responsável</label>
+                                                <input type="text" name="nome" class="form-control item" id="nome" value="{{cliente.nome}}" placeholder="Nome do Responsável">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite a Razão Social da Empresa</label>
+                                                <input type="text" name="razao_social" class="form-control item" id="razao_social" value="{{cliente.razao_social}}" placeholder="Digite a Razão Social da Empresa">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite o CNPJ ou CPF</label>
+                                                <input type="text" name="cnpj_cpf" class="form-control item" id="cnpj_cpf" value="{{cliente.cnpj_cpf}}" placeholder="Digite o CNPJ ou CPF">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite a CEP</label>
+                                                <input name="cep" class="form-control item" type="text" id="cep" value="{{cliente.cep}}" placeholder="CEP" onblur="pesquisacep(this.value);" />
+                                            </div>
+                                            <div class="row">
+                                                <label for="formGroupExampleInput">Digite a Rua</label>
+                                                <div class="col-xl-8">
+                                                    <input type="text" name="rua" class="form-control item" id="rua" value="{{cliente.rua}}" placeholder="Digite a cidade">
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <input type="text" name="numero" class="form-control item" id="numero" value="{{cliente.numero}}" placeholder="Digite a Numero da rua">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite a Bairro</label>
+                                                <input type="text" name="bairro" class="form-control item" id="bairro" value="{{cliente.bairro}}" placeholder="Digite a cidade">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite a Cidade</label>
+                                                <input type="text" name="cidade" class="form-control item" id="cidade" value="{{cliente.cidade}}" placeholder="Digite a cidade">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite a Estado</label>
+                                                <input type="text" name="uf" class="form-control item" id="uf" value="{{cliente.uf}}" placeholder="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite o e-mail para contato</label>
+                                                <input type="email" name="email" class="form-control item" id="email" value="{{cliente.email}}" placeholder="Digite o e-mail para contato">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Digite o telefone para contato</label>
+                                                <input type="text" name="telefone" class="form-control item" id="telefone" value="{{cliente.telefone}}" placeholder="Digite o telefone para contato">
+                                            </div>
+                                            <div class="btn-block">
+
+                                                <button class="btn btn-block create-account" type="submit" href="/">Atualizar</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+
                 </div>
-              </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
+        </div>
 </section>
 {% endblock conteudo %}
-
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  {{ mensagem }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+    {{ mensagem }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>

@@ -1,56 +1,64 @@
-{% extends 'base.html' %}
-{% block conteudo %}
-{% with messages = get_flashed_messages() %}
-{% if messages %}
+{% extends 'base.html' %} {% block conteudo %} {% with messages = get_flashed_messages() %} {% if messages %}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  {% for message in messages %}
-  {{ message }}
-  {% endfor %}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    {% for message in messages %} {{ message }} {% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-{% endif %}
-{% endwith %}
+{% endif %} {% endwith %}
 <section class="page-section cta">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xl-auto mx-auto">
-        <div class="cta-inner bg-faded text-center rounded">
-          <h2 class="section-heading mb-5">
-            <span class="section-heading-upper">Lista</span>
-            <span class="section-heading-lower">Exibição de Clientes</span>
-          </h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-auto mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-5">
+                        <span class="section-heading-upper">Lista</span>
+                        <span class="section-heading-lower">Exibição de Clientes</span>
+                    </h2>
 
-          <div class="content margin-5 padding-3" >
-            <div class="table-responsive-xl custom-table-responsive">
+                    <div class="content margin-5 padding-3">
+                        <div class="table-responsive-xl custom-table-responsive">
 
-              <table class="table-responsive-sm table-striped table-dark table-bordered" >
-                <thead>
-                  <tr class="bg-black mb-lg-3">
-                    <th scope="col">Name</th>
-                    <th scope="col">Razão Social</th>
-                    <th scope="col">CNPJ ou CPF</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Editar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for item in clientes %}
-                  <td>{{ item.nome }}</td>
-                  <td>{{ item.razao_social }}</td>
-                  <td>{{ item.cnpj_cpf }}</td>
-                  <td>{{ item.cidade }}</td>
-                  <td>{{ item.UF }}</td>
-                  <td>{{ item.email }}</td>
-                  <td>{{ item.telefone }}</td>
-                  <td>
+                            <table class="table-responsive-sm table-striped table-dark table-bordered">
 
-                    <a href="{{url_for('editar_clientes', id=item.id)}}">
-                      <button type="button" class="btn btn-secondary">
+                                <thead>
+
+                                    <tr class="bg-black mb-lg-3">
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Razão Social</th>
+                                        <th scope="col">CNPJ ou CPF</th>
+                                        <th scope="col">CEP</th>
+                                        <th scope="col">Rua</th>
+                                        <th scope="col">Numero</th>
+                                        <th scope="col">Bairro</th>
+                                        <th scope="col">Cidade</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">E-mail</th>
+                                        <th scope="col">Telefone</th>
+                                        <th scope="col">Editar</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+                                    {% for item in clientes %}
+
+                                    <td>{{ item.nome }}</td>
+                                    <td>{{ item.razao_social }}</td>
+                                    <td>{{ item.cnpj_cpf }}</td>
+                                    <td>{{ item.cep }}</td>
+                                    <td>{{ item.rua }}</td>
+                                    <td>{{ item.numero }}</td>
+                                    <td>{{ item.bairro }}</td>
+                                    <td>{{ item.cidade }}</td>
+                                    <td>{{ item.uf }}</td>
+                                    <td>{{ item.email }}</td>
+                                    <td>{{ item.telefone }}</td>
+                                    <td>
+
+                                        <a href="{{url_for('editar_clientes', id=item.id)}}">
+
+                                            <button type="button" class="btn btn-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                           class="bi bi-pencil" viewBox="0 0 16 16">
                           <path
@@ -59,18 +67,18 @@
                         </svg>
                       </button>
 
-                    </a>
-                  </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
+                                        </a>
+                                    </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 {% endblock conteudo %}

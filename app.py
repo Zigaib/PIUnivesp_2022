@@ -1,8 +1,8 @@
-from flask import render_template, request, url_for, flash
+from flask import flash, render_template, request, url_for
 from werkzeug.utils import redirect
-from models.cliente import Cadastrocliente
-from conection.conexao import *
 
+from conection.conexao import *
+from models.cliente import Cadastrocliente
 
 db.create_all()
 db.session.commit()
@@ -37,8 +37,12 @@ def cadastro():
             request.form["nome"]
             and request.form["razao_social"]
             and request.form["cnpj_cpf"]
+            and request.form["cep"]
+            and request.form["rua"]
+            and request.form["numero"]
+            and request.form["bairro"]
             and request.form["cidade"]
-            and request.form["UF"]
+            and request.form["uf"]
             and request.form["email"]
             and request.form["telefone"]
         ):
@@ -46,8 +50,12 @@ def cadastro():
                 request.form["nome"],
                 request.form["razao_social"],
                 request.form["cnpj_cpf"],
+                request.form["cep"],
+                request.form["rua"],
+                request.form["numero"],
+                request.form["bairro"],
                 request.form["cidade"],
-                request.form["UF"],
+                request.form["uf"],
                 request.form["email"],
                 request.form["telefone"],
             )
@@ -70,8 +78,12 @@ def atualizar():
             and request.form["nome"]
             and request.form["razao_social"]
             and request.form["cnpj_cpf"]
+            and request.form["cep"]
+            and request.form["rua"]
+            and request.form["numero"]
+            and request.form["bairro"]
             and request.form["cidade"]
-            and request.form["UF"]
+            and request.form["uf"]
             and request.form["email"]
             and request.form["telefone"]
         ):
@@ -81,8 +93,12 @@ def atualizar():
             cliente.nome = request.form["nome"]
             cliente.razao_social = request.form["razao_social"]
             cliente.cnpj_cpf = request.form["cnpj_cpf"]
+            cliente.cep = request.form["cep"]
+            cliente.rua = request.form["rua"]
+            cliente.numero = request.form["numero"]
+            cliente.bairro = request.form["bairro"]
             cliente.cidade = request.form["cidade"]
-            cliente.UF = request.form["UF"]
+            cliente.uf = request.form["uf"]
             cliente.email = request.form["email"]
             cliente.telefone = request.form["telefone"]
             db.session.add(cliente)
