@@ -1,6 +1,5 @@
 from flask import flash, render_template, request, url_for
 from werkzeug.utils import redirect
-
 from conection.conexao import *
 from models.cliente import Cadastrocliente
 

@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 
 
 class Cadastrocliente(db.Model):
-    __tablename__ = 'cadastro_cliente'
+    __tablename__ = 'cadastro_clientes'
     __table_args__ = {"extend_existing": True}
     id = db.Column('id', db.Integer, primary_key=True)
     nome = db.Column('nome', db.String())
